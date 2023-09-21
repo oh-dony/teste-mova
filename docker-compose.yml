@@ -1,16 +1,9 @@
-version: "3"
+version: "3.3"
+
 services:
-  php-apache:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  php:
+    build: .
     ports:
-      - "8080:80" # Mapeie a porta 8080 do host para a porta 80 do contêiner
+      - 8080:80
     volumes:
-      - ./app:/var/www/html/public # Mapeie seu código PHP para o diretório do contêiner
-  nginx:
-    image: nginx:latest
-    ports:
-      - "8081:80" # Mapeie a porta 8081 do host para a porta 80 do contêiner
-    volumes:
-      - ./app:/usr/share/nginx/html # Mapeie seu código PHP para o diretório do contêiner
+      - ./src:/var/www/html/
